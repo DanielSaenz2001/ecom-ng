@@ -14,7 +14,13 @@ export class ClienteFormComponent implements OnInit {
   constructor( private route: ActivatedRoute,
     private clienteService: ClienteService,
     private formBuilder: FormBuilder,
-    private router: Router) { }
+    private router: Router) { 
+      let id =this.route.snapshot.paramMap.get('id')
+      this.clienteService.getById(id).subscribe(response => {
+        console.log(response);
+      });
+    }
+
 
   ngOnInit() {
     this.clienteForm = this.formBuilder.group({
@@ -24,13 +30,19 @@ export class ClienteFormComponent implements OnInit {
       direccion: ['', [Validators.required]]
     });
   }
-save(d){
-  console.log(this.clienteForm.value)
-  this.clienteService.add(this.clienteForm.value).subscribe(response=>{
-    console.log(response);
-    
-  });
-  this.router.navigate(['/cliente']);
-}
+  save(d){
+    console.log(this.clienteForm.value)
+    this.clienteService.add(this.clienteForm.value).subscribe(response=>{
+      console.log(response);
+      
+    });
+    this.router.navigate(['/cliente']);
+  }
+  update(id){
+    this.clienteService.update(id, this.clienteForm.value)
+     .subscribe(response=>{
+      console.log(response);
+      
+  }
 
 }
