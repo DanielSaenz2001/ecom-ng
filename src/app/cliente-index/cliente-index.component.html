@@ -1,10 +1,20 @@
 <p>cliente-index works!</p>
 
+<nav>
+    <a routerLink="/clienteform" routerLinkActive="active">New Client</a>
+</nav>
+
 <div *ngFor="let d of list">
     <span>
         {{d.nombre}}
     </span>
     <span>
         {{d.apellido}}
+    </span>
+    <span>
+        <a routerLink="/clienteform/{{d.id}}" routerLinkActive="active">Edit Client</a>
+    </span>
+    <span>
+        <button class="button-red" (click)="delete(d.id)">Delete Client</button>
     </span>
 </div>
