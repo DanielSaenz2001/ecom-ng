@@ -1,0 +1,74 @@
+<p>persona-form works!</p>
+<h3>Persona</h3>
+<form [formGroup]="personaForm" (ngSubmit)="save()">
+    <div [hidden]="true">
+        <input type="text" formControlName="id" name="id" id="id">
+    </div>
+
+
+    <label>
+        Nombre:
+        <input type="text" formControlName="nombre" required id="nombre" name="nombre">
+        <div [hidden]="personaForm.get('nombre').valid || 
+        personaForm.get('nombre').pristine" class="alert alert-danger">
+            Nombre is required
+        </div>
+    </label> <br>
+
+
+    <label>
+        Apellido Paterno:
+        <input type="text" formControlName="ap_paterno" id="ap_paterno" name="ap_paterno">
+        <div [hidden]="personaForm.get('ap_paterno').valid || 
+        personaForm.get('ap_paterno').pristine" class="alert alert-danger">
+            Apellido is required
+        </div>
+    </label> <br>
+
+
+    <label>
+        Apellido Materno:
+        <input type="text" formControlName="ap_materno" id="ap_materno" name="ap_materno">
+        <div [hidden]="personaForm.get('ap_materno').valid || 
+        personaForm.get('ap_materno').pristine" class="alert alert-danger">
+            Apellido is required
+        </div>
+    </label> <br>
+
+
+    <label>
+        Celular:
+        <input type="text" formControlName="celular" maxlength="9" id="celular" name="celular">
+        <div [hidden]="personaForm.get('celular').valid || 
+        personaForm.get('celular').pristine" class="alert alert-danger">
+            Celular is required
+        </div>
+    </label><br>
+
+
+    <label>
+        Dirección:
+        <input type="text" formControlName="domicilio_actual" id="domicilio_actual" name="domicilio_actual">
+        <div [hidden]="personaForm.get('domicilio_actual').valid || 
+        personaForm.get('domicilio_actual').pristine" class="alert alert-danger">
+            Dirreción is required
+        </div>
+    </label> <br>
+
+    <label>
+        Sexo:
+        <input type="text" formControlName="sexo" id="sexo" name="sexo">
+        <div [hidden]="personaForm.get('sexo').valid || 
+        personaForm.get('sexo').pristine" class="alert alert-danger">
+            Sexo is required
+        </div>
+    </label> <br>
+    <input type="file" name="imagen" id="imagen" formControlName="imagen" >
+
+
+  <button type="submit" [disabled]="!personaForm.valid">Submit</button>
+
+</form>
+<p>
+  Value: {{ personaForm.value | json }}
+</p>

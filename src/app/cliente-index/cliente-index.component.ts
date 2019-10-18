@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
 import { ActivatedRoute } from '@angular/router';
-import { FormBuilder } from '@angular/forms';
-import { FormGroup, FormControl } from '@angular/forms';
-
 import { ClienteService } from '../services/cliente.service';
 
 
@@ -24,6 +21,7 @@ export class ClienteIndexComponent implements OnInit {
 
   ngOnInit() {
     this.listar();
+    console.log("hgola")
   }
 
   delete(id) {

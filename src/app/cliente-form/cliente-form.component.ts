@@ -19,30 +19,40 @@ export class ClienteFormComponent implements OnInit {
       this.clienteService.getById(id).subscribe(response => {
         console.log(response);
       });
+      
     }
 
 
   ngOnInit() {
     this.clienteForm = this.formBuilder.group({
+      id: [''],
       nombre: ['', [Validators.required]],
       apellido: ['', [Validators.required]],
       telefono: ['', [Validators.required, Validators.minLength(9)]],
       direccion: ['', [Validators.required]]
     });
+    let id = this.route.snapshot.paramMap.get('id')
+    if(id!=null){
+      this.clienteService.getById(id).subscribe(response =>{
+        this.clienteForm.setValue(response);
+        console.log(response)
+      })
+    }
   }
-  save(d){
+  save(){
     console.log(this.clienteForm.value)
-    this.clienteService.add(this.clienteForm.value).subscribe(response=>{
-      console.log(response);
-      
-    });
+    let id = this.route.snapshot.paramMap.get('id')
+    if(id != null){
+      this.clienteService.update(id, this.clienteForm.value)
+      .subscribe(response=>{
+       console.log(response);
+      });
+    }else{
+      this.clienteService.add(this.clienteForm.value).subscribe(response=>{
+        console.log("ADD", response);
+      });
+    }
+    
     this.router.navigate(['/cliente']);
   }
-  update(id){
-    this.clienteService.update(id, this.clienteForm.value)
-     .subscribe(response=>{
-      console.log(response);
-      
-  }
-
 }

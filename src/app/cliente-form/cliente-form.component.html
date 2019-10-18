@@ -1,10 +1,12 @@
 <p>cart works!</p>
 <h3>CLient</h3>
 <form [formGroup]="clienteForm" (ngSubmit)="save()">
-  
+    <div [hidden]="false">
+        <input type="text" formControlName="id" name="id" id="id">
+    </div>
     <label>
         Nombre:
-        <input type="text" formControlName="nombre" required>
+        <input type="text" formControlName="nombre" required id="nombre" name="nombre">
         <div [hidden]="clienteForm.get('nombre').valid || 
         clienteForm.get('nombre').pristine" class="alert alert-danger">
             Nombre is required
@@ -12,7 +14,7 @@
     </label> <br>
     <label>
         Apellido:
-        <input type="text" formControlName="apellido">
+        <input type="text" formControlName="apellido" id="apellido" name="apellido">
         <div [hidden]="clienteForm.get('apellido').valid || 
         clienteForm.get('apellido').pristine" class="alert alert-danger">
             Apellido is required
@@ -20,11 +22,11 @@
     </label> <br>
     <label>
         Telefono:
-        <input type="text" formControlName="telefono" maxlength="9">
+        <input type="text" formControlName="telefono" maxlength="9" id="telefono" name="telefono">
     </label><br>
     <label>
         Dirección:
-        <input type="text" formControlName="direccion">
+        <input type="text" formControlName="direccion" id="direccion" name="direccion">
     </label> <br>
 
   <button type="submit" [disabled]="!clienteForm.valid">Submit</button>

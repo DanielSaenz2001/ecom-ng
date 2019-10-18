@@ -16,6 +16,8 @@ import { CartComponent } from './cart/cart.component';
 import { ShippingComponent } from './shipping/shipping.component';
 import { ClienteIndexComponent } from './cliente-index/cliente-index.component';
 import { ClienteFormComponent } from './cliente-form/cliente-form.component';
+import { PersonaFormComponent } from './persona/persona-form/persona-form.component';
+import { PersonaIndexComponent } from './persona/persona-index/persona-index.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -29,6 +31,11 @@ const appRoutes: Routes = [
   { path: 'cliente', component: ClienteIndexComponent },
   { path: 'clienteform', component: ClienteFormComponent },
   { path: 'clienteform/:id', component: ClienteFormComponent },
+
+  { path: 'persona', component: PersonaIndexComponent },
+  { path: 'personaform', component: PersonaFormComponent },
+  { path: 'personaform/:id', component: PersonaFormComponent },
+  
   
 
   { path: '**', component: PageNotFoundComponent },
@@ -45,7 +52,9 @@ const appRoutes: Routes = [
     CartComponent,
     ShippingComponent,
     ClienteIndexComponent,
-    ClienteFormComponent
+    ClienteFormComponent,
+    PersonaFormComponent,
+    PersonaIndexComponent
   ],
   imports: [
     BrowserModule,
