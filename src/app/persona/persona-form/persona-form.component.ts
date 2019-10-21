@@ -31,8 +31,8 @@ export class PersonaFormComponent implements OnInit {
       ap_materno: ['', [Validators.required]],
       celular: ['', [Validators.required, Validators.minLength(9)]],
       domicilio_actual: ['', [Validators.required]],
-      sexo: ['', [Validators.required, Validators.minLength(1)]],
-      imagen: ['']
+      sexo: ['', [Validators.required]],
+      dependiente:null
     });
     let id = this.route.snapshot.paramMap.get('id')
     if(id!=null){

@@ -1,7 +1,7 @@
 <p>persona-form works!</p>
 <h3>Persona</h3>
 <form [formGroup]="personaForm" (ngSubmit)="save()">
-    <div [hidden]="true">
+    <div [hidden]="false">
         <input type="text" formControlName="id" name="id" id="id">
     </div>
 
@@ -56,14 +56,19 @@
     </label> <br>
 
     <label>
-        Sexo:
-        <input type="text" formControlName="sexo" id="sexo" name="sexo">
+        Sexo: <br>
+        <input type="radio" formControlName="sexo" id="sexo" name="sexo" value="male"> Male<br>
+        <input type="radio" formControlName="sexo" id="sexo" name="sexo" value="female"> Female<br>
         <div [hidden]="personaForm.get('sexo').valid || 
         personaForm.get('sexo').pristine" class="alert alert-danger">
             Sexo is required
         </div>
     </label> <br>
-    <input type="file" name="imagen" id="imagen" formControlName="imagen" >
+    <label [hidden]="true">
+        Dependiente: <br>
+        <input type="text" formControlName="dependiente" maxlength="9" id="dependiente" name="dependiente">
+    
+    </label>
 
 
   <button type="submit" [disabled]="!personaForm.valid">Submit</button>
