@@ -22,8 +22,10 @@ export class PersonaIndexComponent implements OnInit {
   delete(id) {
     console.log("cliente: "+ id );
     this.personaService.delete(id).subscribe(response=>{
-      console.log("de = " + JSON.stringify(response ))
+      
+      console.log(JSON.stringify(response ))
       this.listar();
+
     });
     
     }
